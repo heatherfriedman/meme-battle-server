@@ -1,5 +1,6 @@
 import express from 'express';
 import socketIO from 'socket.io';
+import { User } from 'meme-battle';
 
 const app = express();
 
@@ -14,7 +15,8 @@ io.on('connection', socket => {
   socket.on('disconnect', () => {
     console.log(`user ${socket.id} disconnected`);
   });
-  socket.on('set username', name => {
-    console.log(name, 'set as username');
+
+  socket.on('enter game', (user: User) => {
+    socket.broadcast.emit('enter game success', user);
   });
 });

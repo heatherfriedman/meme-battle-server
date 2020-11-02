@@ -16,6 +16,13 @@ io.on('connection', socket => {
     console.log(`user ${socket.id} disconnected`);
   });
 
+  socket.on('enter waiting room', payload => {
+    socket.emit('enter waiting room success', {
+      type: 'enter waiting room success',
+      payload: 'very nice!',
+    });
+  });
+
   socket.on('enter game', (user: User) => {
     socket.broadcast.emit('enter game success', user);
   });

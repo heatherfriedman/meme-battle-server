@@ -17,9 +17,12 @@ io.on('connection', socket => {
   });
 
   socket.on('enter waiting room', payload => {
-    socket.emit('enter waiting room success', {
-      type: 'enter waiting room success',
-      payload: 'very nice!',
+    console.log('entering waiting room...');
+    io.emit('login/enterWaitingRoomSuccess', {
+      type: 'login/enterWaitingRoomSuccess',
+      payload: {
+        username: payload.username,
+      },
     });
   });
 

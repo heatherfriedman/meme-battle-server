@@ -21,7 +21,9 @@ io.on('connection', socket => {
     io.emit('login/enterWaitingRoomSuccess', {
       type: 'login/enterWaitingRoomSuccess',
       payload: {
-        username: payload.username,
+        user: {
+          username: payload.username,
+        },
       },
     });
   });

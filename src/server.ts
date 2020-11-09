@@ -1,6 +1,7 @@
 import express from 'express';
 import socketIO from 'socket.io';
-import { User } from 'meme-battle';
+import { User } from 'meme-battle-core';
+import * as events from 'meme-battle-core/lib/login';
 
 const app = express();
 
@@ -16,10 +17,10 @@ io.on('connection', socket => {
     console.log(`user ${socket.id} disconnected`);
   });
 
-  socket.on('enter waiting room', payload => {
-    console.log('entering waiting room...');
-    io.emit('login/enterWaitingRoomSuccess', {
-      type: 'login/enterWaitingRoomSuccess',
+  socket.on(events.enterWaitingRoomStart, payload => {
+    console.log('a user entered waiting room with id:', socket.id);
+    io.emit(events.enterWaitingRoomSuccess, {
+      type: events.enterWaitingRoomSuccess,
       payload: {
         user: {
           username: payload.username,

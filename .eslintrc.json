@@ -21,6 +21,9 @@
     "project": "./tsconfig.eslint.json"
   },
   "rules": {
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "import/extensions": "off",
     "prettier/prettier": "error",
     "no-console": "off",
     "import/no-unresolved": "off"

@@ -24,6 +24,7 @@ io.on('connection', socket => {
       payload: {
         user: {
           username: payload.username,
+          id: socket.id,
         },
       },
     });
